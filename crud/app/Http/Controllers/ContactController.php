@@ -91,3 +91,4 @@ class ContactController extends Controller
         return redirect('contact')->with('flash_message', 'Contact deleted!'); 
     }
 }
+ 
