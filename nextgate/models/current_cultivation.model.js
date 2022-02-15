@@ -11,6 +11,22 @@ const CurrentCultivation = function(current_cultivation) {
     this.status = current_cultivation.status;
   };
   
+  CurrentCultivation.create = (newEntry, result) => {
+    sql.query("INSERT INTO current_cultivation SET ?", newEntry, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      
+      res.send("created new entry");
+      console.log("created new entry: " /*, { id: res.insertId, ...newEntry }*/);
+      //result(null, { id: res.insertId, ...newEntry });
+    });
+  };
   
+
   module.exports = CurrentCultivation;
+
+
   
