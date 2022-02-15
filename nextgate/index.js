@@ -130,8 +130,9 @@ app.post('/update/:id', (req, res)=>{
 
 //update into lottable
 app.post('/updatelot/:id', (req, res)=>{
-    var sql = "UPDATE lottable SET (strainName = ? , exitDate = ?, amount = ?, grower = ?, batchID = ?, status = ? WHERE id = ?";
-    mysqlConnection.query(sql, [strainName, exitDate, amount, grower, batchID, status, req.params.id] , (err, rows, fields)=>{
+    var sql = "UPDATE lottable SET (strain = ? , exitDate = ?, expectedWeight = ?, grower = ?, batchNo = ?, status = ?, type = ?, seed = ?, growingMethod = ?, organicNutrition = ?, expectedYield = ?, vegDate = ?, flowerDate = ?, harvestDate = ?, curingDate = ?, packageDate = ?, shippingDate = ? WHERE id = ?";
+    mysqlConnection.query(sql, [strain, exitDate, expectedWeight, grower, batchNo, status, type, seed, growingMethod, organicNutrition, expectedYield, vegDate, flowerDate, harvestDate, curingDate, packageDate, shippingDate, req.params.id],
+        (err, rows, fields)=>{
         if(!err){
             //console.log(rows);
             res.send('Updated Successfully!');
@@ -161,7 +162,8 @@ app.post('/insert', (req, res)=>{
 
 //insert into lottable
 app.post('/insertlot', (req, res)=>{
-    var sql = "INSERT INTO lottable ( strainName, exitDate, amount, grower, batchID, status ) VALUES ( ?, ?, ?, ?, ?, ? )";
+    var sql = "INSERT INTO lottable ( strain, exitDate, expectedWeight, grower, batchNo, status, type, seed, growingMethod, organicNutrition, expectedYield, vegDate, flowerDate, harvestDate, curingDate, packageDate, shippingDate ) \
+    VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     mysqlConnection.query(sql , (err, rows, fields)=>{
         if(!err){
             //console.log(rows);
