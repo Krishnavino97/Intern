@@ -2,7 +2,7 @@
 var dbConn = require('./../../config/db.config');
 
 
-//Employee object create
+//Current cultivation object create
 var CurrentCultivation = function(currentcultivation){
   this.lotID           = currentcultivation.lotID;
   this.strainName      = currentcultivation.strainName;
@@ -32,22 +32,6 @@ CurrentCultivation.create = function (newRecord, result) {
 };
 
 
-/*
-Employee.create = function (newEmp, result) {
-dbConn.query("INSERT INTO employees set ?", newEmp, function (err, res) {
-if(err) {
-  console.log("error: ", err);
-  result(err, null);
-}
-else{
-  console.log(res.insertId);
-  result(null, res.insertId);
-}
-});
-};
-
-*/
-
 CurrentCultivation.findById = function (id, result) {
     dbConn.query("SELECT * FROM current_cultivation WHERE lotID = ?", id, function(err, res){
         if(err) {
@@ -61,19 +45,6 @@ CurrentCultivation.findById = function (id, result) {
 };
 
 
-/*
-Employee.findById = function (id, result) {
-dbConn.query("Select * from employees where id = ? ", id, function (err, res) {
-if(err) {
-  console.log("error: ", err);
-  result(err, null);
-}
-else{
-  result(null, res);
-}
-});
-};
-*/
 
 
 CurrentCultivation.findAll = function (result) {
@@ -89,22 +60,6 @@ CurrentCultivation.findAll = function (result) {
     });
 };
 
-
-/*
-Employee.findAll = function (result) {
-dbConn.query("Select * from employees", function (err, res) {
-if(err) {
-  console.log("error: ", err);
-  result(null, err);
-}
-else{
-  console.log('employees : ', res);
-  result(null, res);
-}
-});
-};
-
-*/
 
 
 CurrentCultivation.update = function(id, currentcultivation, result){
@@ -129,20 +84,6 @@ if(err) {
 };
 
 
-/*
-
-Employee.update = function(id, employee, result){
-dbConn.query("UPDATE employees SET first_name=?,last_name=?,email=?,phone=?,organization=?,designation=?,salary=? WHERE id = ?", [employee.first_name,employee.last_name,employee.email,employee.phone,employee.organization,employee.designation,employee.salary, id], function (err, res) {
-if(err) {
-  console.log("error: ", err);
-  result(null, err);
-}else{
-  result(null, res);
-}
-});
-};
-*/
-
 
 CurrentCultivation.delete = function(id, result){
     dbConn.query("DELETE FROM current_cultivation WHERE id = ?", [id], function (err, res){
@@ -155,22 +96,6 @@ CurrentCultivation.delete = function(id, result){
         }
     });
 };
-
-
-
-/*
-Employee.delete = function(id, result){
-dbConn.query("DELETE FROM employees WHERE id = ?", [id], function (err, res) {
-if(err) {
-  console.log("error: ", err);
-  result(null, err);
-}
-else{
-  result(null, res);
-}
-});
-};
-*/
 
 
 module.exports= CurrentCultivation;

@@ -12,18 +12,26 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => {
   res.send("Hello World");
 });
-// listen for requests
-/*
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
 
-*/
+
 // Require current cultivation routes
 const currentCultivationRoutes = require('./src/routes/current.cultivation.routes')
 // using as middleware
 app.use('/api/v1/currentcultivation', currentCultivationRoutes)
 // listen for requests
+
+
+
+
+// Require lottable routes
+const LotTableRoutes = require('./src/routes/lottable.routes')
+// using as middleware
+app.use('/api/v1/lottable', LotTableRoutes)
+
+
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
+
+
