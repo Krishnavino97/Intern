@@ -40,7 +40,18 @@ class TestingController extends Controller
         $testing -> remarks = $req -> remarks;
         $testing -> field_officer = $req -> field_officer;
         $testing -> meter_number = $req -> meter_number;
-      
+
+        /*
+        if($req->file('meter_number') == null ) {
+            $subCategory->image = "null";
+        } else {
+            $fileName = $req->file('meter_number')->getClientOriginalName();
+            $filePath = $req->file('meter_number')->storeAs('users', $fileName, 'public');
+            $testing->meter_number = '/storage/' . $filePath;
+        }
+        */
+
+
         $result = $testing -> save();
     
         if($result){

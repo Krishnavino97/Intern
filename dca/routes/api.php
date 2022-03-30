@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
+/*
 Route::group(['middleware' => 'auth-sanctum'], function(){
 //Testing  
 Route::get("list",[TestingController::class, 'list']);
@@ -30,3 +30,9 @@ Route::delete("delete/{id}", [TestingController::class, 'delete']);
 
 });
 
+*/
+
+Route::get("list",[TestingController::class, 'list']);
+Route::post("add", [TestingController::class, 'add']);
+Route::put("update/{id}", [TestingController::class, 'update']);
+Route::delete("delete/{id}", [TestingController::class, 'delete']);
